@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="property">
+            Spacing:
+            <input id="spacing" type="range">
+        </div>
+        <div class="property">
+            Blur:
+            <input id="blur" type="range">
+        </div>
+        <div class="property">
+            Color:
+            <input id="color" type="color">
+        </div>
+        <div class="image">
+            <img src="1.jpg">
+        </div>
+    </div>
+    
+</body>
+
+<style>
+    :root{
+        --color:white;
+        --spacing:10px;
+        --blur:10px;
+    }
+    body{
+        background-color: darkgrey;
+        display: flex;
+        flex:1;
+        min-height: 100vmin;
+        margin-left: 20px;
+    }
+    .property{
+        float:left;
+        margin-right: 10px;
+    }
+    .image{
+        margin-top: 50px;
+        padding: var(--spacing);
+        background-color:var(--color);
+        filter: blur(var(--blur));
+    }
+</style>
+
+<script>
+    const colorInput=document.getElementById("color");
+    colorInput.addEventListener("change",changeColor);
+    const blurInput=document.getElementById("blur");
+    blurInput.addEventListener("change",changeBlur);
+    const spacingInput=document.getElementById("spacing");
+    spacingInput.addEventListener("change",changeSpacing);
+
+    function changeBlur()
+    {
+        console.log(this.value);
+        document.documentElement.style.setProperty("--blur",this.value/2+'px');
+    }
+    function changeColor()
+    {
+        document.documentElement.style.setProperty("--color",this.value);
+    }
+    function changeSpacing()
+    {
+        document.documentElement.style.setProperty("--spacing",this.value+'px');
+    }
+</script>
+
+</html>

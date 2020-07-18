@@ -52,14 +52,14 @@
 </style>
 
 <script>
-    const colorInput=document.getElementById("color");
+   /* const colorInput=document.getElementById("color");
     colorInput.addEventListener("change",changeColor);
     const blurInput=document.getElementById("blur");
     blurInput.addEventListener("change",changeBlur);
     const spacingInput=document.getElementById("spacing");
     spacingInput.addEventListener("change",changeSpacing);
-
-    function changeBlur()
+    
+      function changeBlur()
     {
         console.log(this.value);
         document.documentElement.style.setProperty("--blur",this.value/2+'px');
@@ -72,6 +72,19 @@
     {
         document.documentElement.style.setProperty("--spacing",this.value+'px');
     }
+    */      // first codes that I wrote on my own
+
+    const inputs=document.querySelectorAll(".container input");
+    inputs.forEach(input => input.addEventListener("change",changeProperty));
+
+    function changeProperty()
+    {
+        const propertyName='--'+this.id;
+        const value = (this.id =='color') ? this.value : this.value+'px';
+        document.documentElement.style.setProperty(propertyName,value);
+    }
+
+  
 </script>
 
 </html>
